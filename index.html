@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT TRANSFORMATION</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Public+Sans:wght@500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- YOUR THEME SETTINGS --- */
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Public+Sans:wght@500;800&display=swap');
+
+        /* GLOBAL STYLES */
+        body {
+            background-color: #FFDE59; /* Bright Pop Yellow background */
+            color: #000;
+            font-family: 'Public Sans', sans-serif;
+            padding-top: 70px; /* Adjusted for Fixed Nav */
+            padding-bottom: 50px;
+        }
+
+        h1, h2, h3, h4, h5, .navbar-brand, .nav-link {
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        /* NAVBAR OVERRIDES */
+        .navbar {
+            background-color: #fff !important;
+            border-bottom: 4px solid #000;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            color: #000 !important;
+            font-size: 1.5rem;
+            background: #FF5757;
+            padding: 5px 15px;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
+            transform: rotate(-2deg);
+        }
+
+        .nav-link {
+            color: #000 !important;
+            font-weight: 800;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        .nav-link:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+        }
+
+        /* CARDS (Brutalist) */
+        .card {
+            border: 3px solid #000;
+            border-radius: 0;
+            background-color: #fff;
+            box-shadow: 6px 6px 0px #000; 
+            transition: all 0.2s;
+            margin-bottom: 25px;
+        }
+
+        .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px #000;
+        }
+
+        .card-header {
+            background-color: #000;
+            color: #fff;
+            border-bottom: 3px solid #000;
+            font-family: 'Archivo Black', sans-serif;
+            border-radius: 0;
+            font-size: 1.1rem;
+            padding: 15px;
+        }
+
+        /* BUTTONS */
+        .btn {
+            border: 2px solid #000;
+            border-radius: 0;
+            font-weight: 800;
+            font-family: 'Archivo Black', sans-serif;
+            box-shadow: 4px 4px 0px #000;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: #FF5757;
+            color: #fff;
+        }
+
+        .btn-primary:hover, .btn-primary.active {
+            background-color: #fff;
+            color: #000;
+            border-color: #000;
+            box-shadow: 2px 2px 0px #000;
+            transform: translate(2px, 2px);
+        }
+
+        /* BADGES */
+        .badge {
+            border: 2px solid #000;
+            color: #000 !important;
+            border-radius: 0 !important;
+            background-color: #fff !important;
+            box-shadow: 3px 3px 0px #000;
+            padding: 8px 10px;
+            font-size: 0.8rem;
+        }
+        .badge-dark { background-color: #000 !important; color: #fff !important; }
+        .badge-alert { background-color: #FF5757 !important; color: #fff !important; }
+
+        /* TABLES */
+        .table { border: 3px solid #000; margin: 0; }
+        .table th { background: #000; color: #fff; border: 2px solid #000; font-family: 'Archivo Black', sans-serif; }
+        .table td { border: 2px solid #000; font-weight: 600; vertical-align: middle; }
+
+        /* TABS Customization */
+        .nav-tabs { border-bottom: 4px solid #000; gap: 5px; }
+        .nav-tabs .nav-link {
+            border: 3px solid #000;
+            border-bottom: none;
+            background: #fff;
+            opacity: 0.6;
+            margin: 0;
+            border-radius: 0;
+        }
+        .nav-tabs .nav-link.active {
+            background: #FF5757;
+            color: #fff !important;
+            opacity: 1;
+            transform: translateY(4px);
+            border-bottom: 4px solid #FF5757;
+        }
+
+        /* MARQUEE ANIMATION */
+        .marquee-wrapper {
+            background: #000;
+            color: #FFDE59;
+            border-bottom: 4px solid #000;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 8px 0;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            position: fixed;
+            top: 76px; /* Below Navbar */
+            width: 100%;
+            z-index: 100;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+        /* UTILITY COLORS */
+        .bg-cyan { background-color: #5CE1E6 !important; }
+        .bg-pink { background-color: #FF66C4 !important; }
+        .bg-green { background-color: #7ED957 !important; }
+        
+        .section-title {
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 3px solid #fff;
+            box-shadow: 6px 6px 0px #000;
+            transform: rotate(-1deg);
+            margin: 40px 0 20px 0;
+            font-size: 1.5rem;
+        }
+
+        /* SPACING FIX for Marquee */
+        .main-container { margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">PROJECT TRANSFORMATION</a>
+            <button class="navbar-toggler btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#strategy">Strategy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#fuel">Fuel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stack">Stack</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#workout">Workout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hair">Hair</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="marquee-wrapper">
+        <div class="marquee-content">
+            ⚠️ V-TAPER LOADING... 💧 5L WATER DAILY 🚫 NO SUGAR ⚡ STAY CONSISTENT 📅 TARGET: APR 26 2026 🔥 AESTHETICS OVER EVERYTHING ⚠️
+        </div>
+    </div>
+
+    <div class="container main-container">
+
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-10">
+                <div class="card p-5" style="transform: rotate(1deg);">
+                    <h1 class="display-3 fw-bold">THE MASTER MANUAL</h1>
+                    <h4 style="background: #000; color: #fff; display: inline-block; padding: 5px 15px;">V-TAPER • AESTHETICS • DOMINANCE</h4>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="strategy" class="section-title">01 // THE GAME PLAN</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-cyan">
+                    <div class="card-header">PHASE 1: BASE</div>
+                    <div class="card-body">
+                        <span class="badge badge-dark mb-2">WEEKS 1-4</span>
+                        <ul class="list-unstyled fw-bold mt-2">
+                            <li>> Gut Health Fix</li>
+                            <li>> Posture Check</li>
+                            <li>> 100% Hydration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-green">
+                    <div class="card-header">PHASE 2: WIDTH</div>
+                    <div class="card-body">
+                        <span class="badge badge-dark mb-2">WEEKS 5-8</span>
+                        <ul class="list-unstyled fw-bold mt-2">
+                            <li>> V-Taper Focus</li>
+                            <li>> Spine Decompression</li>
+                            <li>> Progressive Overload</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-pink">
+                    <div class="card-header">PHASE 3: POLISH</div>
+                    <div class="card-body">
+                        <span class="badge badge-dark mb-2">WEEKS 9-12</span>
+                        <ul class="list-unstyled fw-bold mt-2">
+                            <li>> Strip Belly Fat</li>
+                            <li>> Visible Abs</li>
+                            <li>> Max Intensity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="fuel" class="section-title">02 // FUEL LOG</h2>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">⚠️ BANNED ITEMS</div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <span class="badge badge-alert">SUGAR</span>
+                            <span class="badge badge-alert">SODA</span>
+                            <span class="badge badge-alert">MAIDA</span>
+                            <span class="badge badge-alert">FRIED</span>
+                        </div>
+                        <hr style="border: 2px solid #000;">
+                        <h5>NON-NEGOTIABLES:</h5>
+                        <ul class="list-unstyled fw-bold">
+                            <li>💧 5 Liters Water</li>
+                            <li>🥩 50g Soya/Whey Daily</li>
+                            <li>🍽 50% Less Rice, 2x Sabzi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="card p-0">
+                    <table class="table">
+                        <thead><tr><th>TIME</th><th>PROTOCOL</th></tr></thead>
+                        <tbody>
+                            <tr><td>WAKE</td><td>Warm Water + Lemon + Banana</td></tr>
+                            <tr><td>LUNCH</td><td>2 Rotis + Dal + Curd + Salad</td></tr>
+                            <tr class="bg-cyan"><td>POST-GYM</td><td><strong>50g Soya Chunks/Whey</strong></td></tr>
+                            <tr><td>DINNER</td><td>Roti + Sabzi (NO RICE)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="stack" class="section-title">03 // BUDGET STACK</h2>
+        <div class="row text-center">
+            <div class="col-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>ZINCOVIT</h4>
+                        <p class="small fw-bold">AFTER LUNCH</p>
+                        <span class="badge badge-dark">~₹100</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>LIMCEE</h4>
+                        <p class="small fw-bold">AFTER DINNER</p>
+                        <span class="badge badge-dark">~₹25</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>SHELCAL</h4>
+                        <p class="small fw-bold">ALT DAYS</p>
+                        <span class="badge badge-dark">~₹120</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>EVION 400</h4>
+                        <p class="small fw-bold">FACE (TOPICAL)</p>
+                        <span class="badge badge-dark">~₹35</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="workout" class="section-title">04 // WORKOUT</h2>
+        <div class="card p-4">
+            <div class="alert bg-white border border-3 border-dark fw-bold mb-4 text-center">
+                <span class="text-primary">RULE 1:</span> DRINK 1L WATER DURING WORKOUT<br>
+                <span class="text-primary">RULE 2:</span> SHOWER WITHIN 20 MINS (For Better Skin)
+            </div>
+
+            <ul class="nav nav-tabs mb-3 justify-content-center" id="workoutTabs" role="tablist">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#day1">DAY 1</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#day2">DAY 2</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#day3">DAY 3</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#day4">DAY 4</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#day5">DAY 5</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#day6">DAY 6</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#day7">DAY 7</button></li>
+            </ul>
+
+            <div class="tab-content" id="workoutTabContent">
+                <div class="tab-pane fade show active" id="day1">
+                    <h3 class="mb-3">PUSH: CHEST & WIDTH</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Incline Bench Press (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Flat Bench Press (3x10)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Decline Bench Press (3x10)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Rope Pushdowns (3x15)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Overhead Extensions (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold bg-cyan">Face Pulls (3x15) - POSTURE</li>
+                        <li class="list-group-item bg-dark text-white fw-bold">Finisher: 20 Pushups</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="day2">
+                    <h3 class="mb-3">PULL: BACK & HEIGHT</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Wide Grip Lat Pulldown (4x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Seated Cable Row (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Barbell Rows (3x10)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Barbell Curls (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Hammer Curls (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold bg-green">Dead Hangs (3x60s) - SPINE</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="day3">
+                    <h3 class="mb-3">ABS, WAIST & CARDIO</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Hanging Leg Raises (3x15)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Situps (3x20)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Crunches (3x20)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Russian Twists (3x20)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold bg-pink">Stomach Vacuums (5x Hold)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Cardio: 30 Mins Incline Walk</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Stretch: Cobra + Cat/Cow</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="day4">
+                    <h3 class="mb-3">HEAVY PUSH & STRENGTH</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Heavy Bench Press (5x5)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Dips (3x Failure)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Cable Flys (3x15)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Rope Pushdowns (3x10)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Close Grip Pushups (2x Failure)</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="day5">
+                    <h3 class="mb-3">BACK THICKNESS & POSTURE</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Deadlifts (3x8)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold bg-cyan">Reverse Pec Deck (4x15) - POSTURE</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Lat Pulldown (Reverse Grip) (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Seated Cable Row (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Concentration Curls (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold bg-green">Dead Hangs (3x60s)</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="day6">
+                    <h3 class="mb-3">ATHLETIC LEGS & SHOULDERS</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Barbell Squats (3x20) - FAT BURN</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Leg Press (3x12)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Dumbbell Shoulder Press (3x10)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Lateral Raises (4x15-20)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Shrugs (3x15)</li>
+                        <li class="list-group-item border-2 border-dark mb-2 fw-bold">Calf Raises (4x25)</li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade" id="day7">
+                    <h3 class="mb-3">REST & RECOVERY</h3>
+                    <div class="card p-3 bg-light border-0">
+                        <ul class="list-unstyled fw-bold">
+                            <li class="mb-2">🚶 ACTIVE RECOVERY: 20 MIN WALK</li>
+                            <li class="mb-2">🧖 SKINCARE: EXFOLIATE BODY + FACE MASK</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="hair" class="section-title">05 // HAIR GLOW TIPS 💇‍♂️</h2>
+        <div class="card p-4 bg-cyan" style="transform: rotate(1deg);">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3 class="mb-4">🧪 THE SURAT HUMIDITY FIX</h3>
+                    <div class="card p-3">
+                        <h5>THE MAGIC MIX:</h5>
+                        <ul class="fw-bold list-unstyled">
+                            <li>🥥 COCONUT OIL (50%)</li>
+                            <li>💧 CASTOR OIL (50%)</li>
+                            <li>🍋 LEMON (If Dandruff)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-3 bg-white">
+                        <h5>📅 THE ROUTINE</h5>
+                        <div class="d-flex gap-2 mb-3">
+                            <span class="badge badge-dark">WEDNESDAY NIGHT</span>
+                            <span class="badge badge-dark">SATURDAY NIGHT</span>
+                        </div>
+                        <hr style="border: 2px solid #000;">
+                        <h5>🚿 WASH RULES</h5>
+                        <ul class="fw-bold list-unstyled">
+                            <li>> COLD / LUKEWARM WATER ONLY</li>
+                            <li>> NO DAILY SHAMPOO</li>
+                            <li>> RINSE WITH PLAIN WATER IF SWEATY</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
